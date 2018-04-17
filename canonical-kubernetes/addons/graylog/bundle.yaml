@@ -9,15 +9,15 @@ services:
     charm: cs:xenial/elasticsearch-26
     num_units: 1
   filebeat:
-    charm: cs:xenial/filebeat-12
+    charm: cs:xenial/filebeat-14
     options:
       logpath: '/var/log/*.log'
       kube_logs: True
   graylog:
-    charm: cs:xenial/graylog-12
+    charm: cs:xenial/graylog-15
     num_units: 1
   mongodb:
-    charm: cs:xenial/mongodb-46
+    charm: cs:xenial/mongodb-47
     num_units: 1
 relations:
   - ["apache2:reverseproxy", "graylog:website"]
