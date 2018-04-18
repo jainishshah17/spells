@@ -16,8 +16,10 @@ services:
       kube_logs: True
   graylog:
     charm: cs:xenial/graylog-15
-    constraints: mem=3G
+    constraints: mem=7G
     num_units: 1
+    to:
+      - "0"
   mongodb:
     charm: cs:xenial/mongodb-47
     num_units: 1
@@ -28,3 +30,7 @@ relations:
   - ["filebeat:beats-host", "kubernetes-master:juju-info"]
   - ["filebeat:beats-host", "kubernetes-worker:juju-info"]
   - ["filebeat:logstash", "graylog:beats"]
+machines:
+  "0":
+    series: xenial
+    constraints: mem=3G
